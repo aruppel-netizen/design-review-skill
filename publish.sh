@@ -12,7 +12,7 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 SRC="$HERE/design-review"
-SKILL_URL="https://claude.ai/customize/skills/id/plugin_01FDUzPqqPJgE1hGiBgsDXaN"
+SKILL_URL="https://claude.ai/customize/plugins/plugin_01FDUzPqqPJgE1hGiBgsDXaN"
 REPOS="${REPOS:-$HOME/ai-prototypes/search-bar-web}"
 
 PUSH=0
@@ -33,6 +33,13 @@ rm -f design-review.zip design-review.skill
 zip -rq design-review.zip design-review -x '*.DS_Store'
 cp design-review.zip design-review.skill
 echo "✓ Архивы пересобраны: design-review.skill (Claude), design-review.zip (ChatGPT)"
+
+# 1а. Папка плагина для claude.ai (публикуется в организацию через Claude: «опубликуй плагин»)
+rm -rf "$HERE/plugin/skills/design-review"
+mkdir -p "$HERE/plugin/skills"
+cp -R "$SRC" "$HERE/plugin/skills/"
+find "$HERE/plugin" -name .DS_Store -delete
+echo "✓ Папка плагина обновлена: plugin/"
 
 # 1б. Сам репозиторий скилла
 if [ -d "$HERE/.git" ]; then
@@ -83,9 +90,8 @@ done
 # 3. claude.ai — вручную
 cat <<EOF
 
-Осталось вручную: перезалить скилл в claude.ai
-  1. Откроется страница скилла (или откройте: $SKILL_URL)
-  2. Загрузите: $HERE/design-review.skill
-После этого у всех в Claude (claude.ai, Desktop, Code) скилл обновится сам.
+Осталось: обновить плагин в claude.ai.
+  Скажите Claude Code: «опубликуй плагин skills-export/plugin с заменой» (инструмент PublishPlugin).
+  Страница плагина: $SKILL_URL
+После этого у всех в организации скилл обновится сам.
 EOF
-[ -z "${NO_OPEN:-}" ] && command -v open >/dev/null && open "$SKILL_URL" || true

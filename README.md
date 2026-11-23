@@ -10,7 +10,7 @@
 
 | Где работаете | Как поставить |
 |---|---|
-| **Claude** (claude.ai, Desktop, Code) | включить по ссылке: https://claude.ai/customize/skills/id/plugin_01FDUzPqqPJgE1hGiBgsDXaN. Ссылка открывается только у тех, кому скилл доступен в организации claude.ai. Обновления приходят сами |
+| **Claude** (claude.ai, Desktop, Code) | включить по ссылке: https://claude.ai/customize/plugins/plugin_01FDUzPqqPJgE1hGiBgsDXaN. Плагин опубликован в библиотеке организации, обновления приходят сами. В Claude Code: `/plugin install design-review@claudeai-organization-library` |
 | Claude, если ссылка не открывается | Settings → Capabilities → Skills → Upload skill → [`design-review.skill`](design-review.skill) |
 | **Codex** | `git clone` этого репо → `./install.sh codex` |
 | **Claude Code / Codex, для всей команды проекта** | `./install.sh repo /путь/к/проекту` → закоммитить `.claude/skills` и `.agents/skills` в проект |
