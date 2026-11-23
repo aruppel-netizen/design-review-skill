@@ -10,6 +10,8 @@ SKILL.md называет действия по смыслу. Здесь — ч�
 | свойства и референсный код | `get_design_context` |
 | токены | `get_variable_defs` |
 | скриншот фрейма | `get_screenshot` |
+| компонент Figma → компонент в коде (чекап ДС) | `get_code_connect_map` |
+| найти компонент кита / библиотеки | `search_design_system`, `get_libraries` |
 | запись шаблона ревью | `use_figma` (сначала скилл `figma-use`) |
 
 В Claude Code имена с префиксом: `mcp__figma__get_metadata` и т.д. В Codex — `figma.get_metadata` или похожее; ориентируйся на суффикс.

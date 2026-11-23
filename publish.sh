@@ -42,7 +42,10 @@ if [ -d "$HERE/.git" ]; then
   else
     git commit -q -m "$MSG" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
     echo "✓ репо скилла — закоммичено: $(git log --oneline -1)"
-    [ "$PUSH" = 1 ] && git push -q origin HEAD && echo "✓ репо скилла — запушено в origin"
+    if [ "$PUSH" = 1 ]; then
+      git push -q origin HEAD && echo "✓ репо скилла — запушено в origin" \
+        || echo "✗ репо скилла — push не прошёл (репозиторий в gitea создан?), продолжаю"
+    fi
   fi
 fi
 
