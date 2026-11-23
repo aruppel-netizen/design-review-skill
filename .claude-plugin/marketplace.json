@@ -1,0 +1,11 @@
+{
+  "name": "design-review-skill",
+  "owner": { "name": "Design team" },
+  "plugins": [
+    {
+      "name": "design-review",
+      "source": "./plugin",
+      "description": "Дизайн-ревью сборки по макету Figma и прототипу из репозитория: классы критичности, самопроверка разработчика, чекап компонентов и токенов ДС."
+    }
+  ]
+}
