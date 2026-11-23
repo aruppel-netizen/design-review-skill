@@ -1,0 +1,17 @@
+# Добавьте эти блоки в ~/.codex/config.toml
+# Figma MCP (удалённый сервер Figma; при первом запуске попросит авторизацию:
+#   codex mcp login figma)
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+
+# Браузер для проверки стенда — выберите ОДИН из двух вариантов.
+
+# Вариант 1: Playwright MCP
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+
+# Вариант 2: Chrome DevTools MCP (открывает ваш Chrome)
+# [mcp_servers.chrome-devtools]
+# command = "npx"
+# args = ["-y", "chrome-devtools-mcp@latest"]
