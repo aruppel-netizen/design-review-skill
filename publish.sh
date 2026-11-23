@@ -42,10 +42,13 @@ if [ -d "$HERE/.git" ]; then
   else
     git commit -q -m "$MSG" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
     echo "✓ репо скилла — закоммичено: $(git log --oneline -1)"
-    if [ "$PUSH" = 1 ]; then
-      git push -q origin HEAD && echo "✓ репо скилла — запушено в origin" \
-        || echo "✗ репо скилла — push не прошёл (репозиторий в gitea создан?), продолжаю"
-    fi
+  fi
+  # Пушим во все remotes скилла (gitea = origin, github = копия); ошибка одного не останавливает остальное
+  if [ "$PUSH" = 1 ]; then
+    for R in $(git remote); do
+      git push -q "$R" HEAD && echo "✓ репо скилла — запушено в $R" \
+        || echo "✗ репо скилла — push в $R не прошёл (репозиторий создан?), продолжаю"
+    done
   fi
 fi
 

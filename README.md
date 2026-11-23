@@ -21,7 +21,8 @@
 - **браузер**, чтобы проверять живой стенд: Claude in Chrome, Playwright MCP или Chrome DevTools MCP. Без браузера скилл работает по скринам и выдаёт менее точный результат.
 
 ```bash
-git clone https://github.com/aruppel-netizen/design-review-skill.git
+git clone https://ci-gitea.cian.tech/a.ruppel/design-review-skill.git
+# или копия на GitHub: git clone https://github.com/aruppel-netizen/design-review-skill.git
 cd design-review-skill
 ./install.sh codex        # или: ./install.sh repo ~/path/to/project
 ```
