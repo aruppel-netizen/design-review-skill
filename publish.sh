@@ -12,7 +12,7 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 SRC="$HERE/design-review"
-SKILL_URL="https://claude.ai/customize/skills/id/plugin_016MnGNGLaaPKk1xgNM4eTF1"
+SKILL_URL="https://claude.ai/customize/skills/id/plugin_01FDUzPqqPJgE1hGiBgsDXaN"
 REPOS="${REPOS:-$HOME/ai-prototypes/search-bar-web}"
 
 PUSH=0
