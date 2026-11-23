@@ -21,6 +21,15 @@ MSG="${1:-Обновление скилла design-review}"
 
 [ -f "$SRC/SKILL.md" ] || { echo "Нет $SRC/SKILL.md"; exit 1; }
 
+# 0. Забрать правки коллег из gitea, чтобы не опубликовать устаревшую версию
+if [ -d "$HERE/.git" ]; then
+  cd "$HERE"
+  if ! git pull -q --rebase --autostash origin main; then
+    echo "✗ Не удалось подтянуть правки из gitea (конфликт?). Разберитесь с git status и запустите снова."; exit 1
+  fi
+  echo "✓ Правки из gitea подтянуты"
+fi
+
 # Проверка описания: стандарт Agent Skills ограничивает его 1024 символами
 DESC_LEN=$(sed -n 's/^description: //p' "$SRC/SKILL.md" | head -1 | python3 -I -c "import sys; print(len(sys.stdin.read().strip()))")
 if [ "$DESC_LEN" -gt 1024 ]; then
